@@ -89,8 +89,8 @@ public:
 				if (LI)
 				{
 					Vec3f distReflected = secondRay.dir - 2 * (secondRay.dir.dot(ray.hit->GetNormal(ray))) * ray.hit->GetNormal(ray);
-					float angle = max(0.0f, ray.dir.dot(distReflected));
-					csTotal += * LI * pow(angle, m_ke);
+					float cosAngle = max(0.0f, ray.dir.dot(distReflected));
+					csTotal += * LI * pow(cosAngle, m_ke);
 				}
 			}
 		}
