@@ -53,6 +53,9 @@ public:
 		if (ray.t <= f || f <  Epsilon  ) return false;
 		
 		ray.t = f;
+
+		//storing the primitive’s address in hit
+		ray.hit = this;
 		
 		return true;
 	}
@@ -60,7 +63,11 @@ public:
 	virtual Vec3f GetNormal(const Ray& ray) const override
 	{
 		// --- PUT YOUR CODE HERE ---
-		return Vec3f();
+		//Reference: 
+		//https://math.stackexchange.com/questions/305642/how-to-find-surface-normal-of-a-triangle
+
+		Vec3f normal = normalize((m_b - m_a).cross(m_c - m_a));
+		return normal;
 	}
 	
 private:

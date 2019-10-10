@@ -22,7 +22,12 @@ public:
 	virtual Vec3f Shade(const Ray& ray) const override
 	{
 		// --- PUT YOUR CODE HERE ---
-		return RGB(0, 0, 0);
+		//cos(theetha) = I (Incident Ray) dot N (Normal)
+		//similar to theoretical hw
+		float angle = ray.hit->GetNormal(ray).dot(-ray.dir);
+		Vec3f result = (abs(angle))*CShaderFlat::Shade(ray);
+		return result;
+		
 	}
 };
 
